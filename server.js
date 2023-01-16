@@ -5,7 +5,7 @@
 *  (including web sites) or distributed to other students.
 * 
 *  Name: Aditya Rahman Student ID: 046207130 Date: Jan 15, 2023
-*  Cyclic Link: https://colorful-raincoat-dog.cyclic.app
+*  Cyclic Link: https://eager-rose-sparrow.cyclic.app
 *
 ********************************************************************************/ 
 
@@ -38,14 +38,14 @@ app.get("/", (req, res) => {
 app.post("/api/movies", (req, res) => {
     db.addNewMovie(req.body)
         .then(() => {res.status(201).json(data)})
-        .catch(err => {res.status(500).json({error: err})})
+        .catch((err) => {res.status(500).json({error: err})})
 
 });
 
 //GET /api/movies by page
 app.get("/api/movies", (req, res) => {
     db.getAllMovies(req.query.page, req.query.perPage, req.query.title)
-        .then(data => {
+        .then((data) => {
             if(Date.length === 0){
                 res.status(204).json({message: "No movies were found"});
 
@@ -55,15 +55,15 @@ app.get("/api/movies", (req, res) => {
 
             }
         })
-        .catch(err => {res.status(500).json({error: err})})
+        .catch((err) => {res.status(500).json({error: err})})
 
 });
 
 //GET /api/movies/:_id
 app.get("/api/movies/:_id", (req, res) => {
     db.getMovieById(req.params._id)
-        .then(data => {res.status(201).json(data)})
-        .catch(err => {res.status(500).json({error: err})})
+        .then((data) => {res.status(201).json(data)})
+        .catch((err) => {res.status(500).json({error: err})})
 
 });
 
@@ -71,7 +71,7 @@ app.get("/api/movies/:_id", (req, res) => {
 app.put("/api/movies/:_id", (req, res) => {
     db.updateMovieById(req.body, req.params._id)
         .then(() => {res.status(201).json({message: "Movie updated successfully"})})
-        .catch(err => {res.status(500).json({error: err})})
+        .catch((err) => {res.status(500).json({error: err})})
 
 });
 
@@ -79,6 +79,6 @@ app.put("/api/movies/:_id", (req, res) => {
 app.delete("/api/movies/:_id", (req, res) => {
     db.deleteMovieById(req.params._id)
         .then(() => {res.status(201).json({message: "Movie deleted successfully"})})
-        .catch(err => {res.status(500).json({error: err})})
+        .catch((err) => {res.status(500).json({error: err})})
 
 });
